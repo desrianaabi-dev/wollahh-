@@ -1,0 +1,270 @@
+/* ==================== ROOT VARIABLES ==================== */
+:root{
+  --background: #ce89a4;
+  --card: #f3e8e8;
+  --accent: #ea66aa;
+  --accent-2: #ffb6c1;
+  --muted: #2f2b2b;
+  --text: #2b2b2b;
+  --shadow: 0 6px 18px rgba(43,43,43,0.08);
+  --radius: 14px;
+  --max-width: 1100px;
+  --gap: 20px;
+  --glass: rgba(235, 219, 219, 0.7);
+  --transition: .25s ease;
+}
+
+/* ==================== GLOBAL ==================== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(180deg, #d496b1 0%, #d6e7ef 60%);
+  color:var(--text);
+  line-height:1.45;
+}
+
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:24px;
+}
+
+/* ==================== HEADER ==================== */
+header{
+  width:100%;
+  background:rgba(255,255,255,0.4);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 22px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter: blur(10px);
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+
+.logo{
+  font-weight:700;
+  font-size:1.6rem;
+  color:var(--accent);
+}
+
+.menu-icon{ display:none; cursor:pointer; }
+.menu-icon img{
+  width:20px;
+  height:20px;
+}
+
+.header-icons{
+  display:flex;
+  gap:10px;
+}
+
+.icon{
+  width:24px;
+  height:24px;
+  transition:var(--transition);
+}
+
+#menu-toggle{ display:none; }
+
+/* ==================== NAV ==================== */
+.menu-list{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.menu-list a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:10px;
+  transition:var(--transition);
+}
+.menu-list a:hover{
+  background:var(--glass);
+  color:var(--accent);
+}
+
+/* ==================== HERO ==================== */
+.hero{
+  background: linear-gradient(180deg, rgba(255,126,179,0.12), rgba(255,182,193,0.06));
+  margin:20px auto;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.hero h1{
+  color:var(--accent);
+}
+
+/* ==================== SECTIONS ==================== */
+section{
+  padding:22px;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+
+/* =======================================================
+      PRODUK — HP → HORIZONTAL SCROLL
+      PRODUK — LAPTOP → GRID 
+======================================================= */
+
+/* ====== DEFAULT (HP) → Horizontal Scroll ====== */
+.products {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 14px;
+  padding: 10px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.products::-webkit-scrollbar {
+  height: 6px;
+}
+.products::-webkit-scrollbar-thumb {
+  background: #e8c1cc;
+  border-radius: 10px;
+}
+
+.product-card {
+  flex: 0 0 180px;
+  min-width: 180px;
+  max-width: 180px;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 14px;
+  text-align:center;
+  scroll-snap-align:start;
+  box-shadow: var(--shadow);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.love-box {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.love-box input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: none;
+}
+
+.love-box label {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #d0d0d0;
+  transition: .2s ease;
+}
+
+.love-box input:checked + label {
+  color: red;
+  transform: scale(1.2);
+}
+/* ====== TABLET & LAPTOP (768px ke atas) → GRID ====== */
+@media(min-width:768px){
+  .products{
+    display:grid;
+    overflow-x:hidden;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+    padding:10px 0;
+  }
+
+  .product-card{
+    min-width:100%;
+    max-width:100%;
+    flex:none;
+    padding:16px;
+  }
+
+  .product-card img{
+    height:240px;
+  }
+}
+
+/* ====== DESKTOP LEBAR → GRID 4 KOLOM ====== */
+@media(min-width:1200px){
+  .products{
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .product-card img{
+    height:260px;
+  }
+}
+
+/* ==================== FORM ==================== */
+form{
+  max-width:760px;
+  margin:18px auto;
+  padding:20px;
+  background:#ffffffdd;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+form input,
+form select,
+form textarea{
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.1);
+  font-size:1rem;
+}
+
+form button{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  border:none;
+  color:white;
+  padding:12px 16px;
+  border-radius:12px;
+  font-weight:700;
+}
+
+/* ==================== FOOTER ==================== */
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+}
+
+/* ==================== MOBILE NAV ==================== */
+@media(max-width:680px){
+  .menu-icon{ display:block; }
+
+  .menu-list{
+    display:none;
+    flex-direction:column;
+    background:white;
+    padding:14px 20px;
+    border-radius:0 0 14px 14px;
+    position:absolute;
+    top:68px;
+    left:0;
+    right:0;
+    box-shadow:0 8px 18px rgba(0,0,0,0.1);
+  }
+
+  #menu-toggle:checked ~ .menu-list{
+    display:flex;
+  }
+}
